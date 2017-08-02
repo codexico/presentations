@@ -784,9 +784,11 @@ console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 3}}
 ---
 
 ## Comparações usando == (dois iguais)
-tabela de igualdades
+
+[tabela de igualdades](https://github.com/dorey/Javascript-Equality-Table/)
 
 
+---
 
 ## Coisas que não falei
 
