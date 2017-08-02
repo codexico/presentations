@@ -150,6 +150,7 @@ $.get( "ajax/test.html", function (data) {
 
 ### arrow functions
 ```js
+// IE10+
 const multiply = (x, y) => {
   return y * x;
 }
@@ -230,7 +231,9 @@ var foo = [1,2,3,4,245,3421,34];
 for (var i =0; i < foo.length, i++) {
   console.log(foo[i]);
 }
+```
 
+```js
 // [].map // IE9+
 const letras = ['a', 'b', 'c'];
 const repete = letras.map(letra => letra + letra);
@@ -241,7 +244,7 @@ letras; // ['a', 'b', 'c']
 ---
 
 ## Como incluir js na página
-```js
+```html
 <script type="text/javascript">
 // code
 </script>
@@ -254,12 +257,13 @@ letras; // ['a', 'b', 'c']
 
 ```js
 // inserir pelo js
-
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+```
 
+```js
 (function (i, s, o, g, r, a, m) {
 
   a = document.createElement('script'),
@@ -274,6 +278,8 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 +++
 
 > Scripts não async interrompem o carregamento da página.
+
++++
 
 ### _import_ and _export_ Using webpack or node
 
@@ -298,8 +304,8 @@ export default GMap;
 
 ## jQuery
 ```js
-$('.product-list').addClass('newclass').show('slow').children('li')
-  .each(function (index) {
+$('.product-list').addClass('newclass').show('slow')
+  .children('li').each(function (index) {
     $(this).toggleClass('foo');
   }
 );
@@ -314,15 +320,13 @@ $('.product-list').addClass('newclass').show('slow').children('li')
 ### DOM Ready
 
 ```js
-// jQuery
 $(document).ready(function () {
-  // ready
+  // executa quando o DOM terminou de carregar
+  // utilizado para iniciar os scripts que dependem do HTML da página
   init();
 });
 
 $(function () {
-  // executa quando o DOM terminou de carregar
-  // utilizado para iniciar os scripts que dependem do HTML da página
   init();
 });
 ```
@@ -428,6 +432,8 @@ Array.prototype.forEach.call(currentEl, function(el, i){
 
 +++
 
+NodeList
+
 ```js
 Array.prototype.forEach.call(currentEl, function(el, i){
   el.appendChild(p);
@@ -445,7 +451,7 @@ currentEl.map(...) // ES6
 +++
 
 ```js
-var p = "<p>{{value}}</p>".replace('{{value}}', 'Teste');
+var p = "<p>###value###</p>".replace('###value###', 'Teste');
 ```
 
 +++
@@ -544,15 +550,8 @@ const BasketTableContainer = () => (
 
 ```js
 import React, { Component } from 'react';
-import GMapContainer from '../../components/GMap/GMapContainer';
 import Card from '../../components/Card/Card';
-import { isValidCepFormat, getJson } from '../../modules/helpers';
-
-
-function getAddressByCep(value) {
-    let url = `https://viacep.com.br/ws/${value.replace('-','')}/json`;
-    return getJson(url);
-}
+import { getAddressByCep } from '../../modules/helpers';
 
 class CepAddressFinder extends Component {
   constructor(props) {
@@ -561,25 +560,16 @@ class CepAddressFinder extends Component {
     this.state = {
       value: "",
       address: "",
-      showCard: false
+      showCard: false,
     };
-  }
-
-  handleCloseCard = () => {
-    this.setState({showCard: false});
   }
 
   handleCepChange = (value) => {
     this.setState({value});
 
     getAddressByCep(value).then((address) => {
-      this.setState({address: address});
-      this.setState({showCard: true});
+      this.setState({address: address, showCard: true});
     });
-  }
-
-  handleSubmit = (value) => {
-    this.handleCepChange(value);
   }
 
   render() {
@@ -589,10 +579,8 @@ class CepAddressFinder extends Component {
         <Card
           value={this.state.value}
           showCard={this.state.showCard}
-          handleCloseCard={this.handleCloseCard}
-        >
-          <GMapContainer cep={this.state.cep} address={this.state.address} />
-        </Card>
+          handleCepChange={this.handleCepChange}
+        />
       }
     </div>
   }
@@ -611,10 +599,10 @@ export default CepAddressFinder;
 
 ---
 
+> proptypes
+> REDUX
 
-> ***** REDUX
-
-
+---
 
 ```js
 { // bloco
@@ -631,6 +619,7 @@ foo; // undefined
 }
 foo; // 4
 ```
+---
 
 ## ponto e vírgula
 
@@ -645,23 +634,7 @@ return       // aqui o js insere o ; automaticamente
 foo() // undefined (o esperado era "foo")
 ```
 
-
-## Igualdade
-```js
-0 == false; // true => nunca use "=="
-0 === false; // false
-0 != false; // false
-0 !== false; // true
->
-<
->=
-<=
-
-!false; // true
-!!false; //false
-!!undefined; // false
-!!0; // false
-```
+---
 
 ## Date
 ```js
@@ -682,8 +655,7 @@ var d17 = new Date(2010,9,17, 0);
 d17.getDate(); // 16 => mudança de horário de verão
 ```
 
-
-
+---
 
 ### default values
 ```js
@@ -696,6 +668,9 @@ function multiply(a, b) {
   return a * multiplicador;
 }
 ```
+
+---
+
 ## window, this
 ```js
 this === window; // true
@@ -716,6 +691,8 @@ function strictFunction() {
 strictFunction(); // undefined
 ```
 
+---
+
 É comum também passar algo para a IIFE mudando o nome da variável:
 
 ```js
@@ -730,12 +707,16 @@ strictFunction(); // undefined
 MAGALU.page; // "home"
 ```
 
+---
+
 ```js
 (function(undefined) {
   console.log(undefined, typeof undefined);
 })('foo'); // "foo string"
 ```
 > muito utilizada para isolar o escopo (como as const em blocos), criar variáveis e funções privadas
+
+---
 
 ```js
 var plugin = (function () {
@@ -759,12 +740,11 @@ plugin.plusOne(); // 1
 plugin.plusOne(); // 2
 ```
 
-
-
-
-
+---
 
 ## Bizarrices
+
+---
 
 ### typeof
 ```js
@@ -779,22 +759,29 @@ null === null //true
 null == null //true
 ```
 
-### Copiar um objeto não faz deep cloning
+---
+
+## Clone
+
+> Copiar um objeto não faz deep cloning
+
+---
+
 ```js
 let obj1 = { a: 0 , b: { c: 0}};
-  let obj2 = Object.assign({}, obj1);
-  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+let obj2 = Object.assign({}, obj1);
+console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
 
-  obj1.a = 1;
-  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
-  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
+obj1.a = 1;
+console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 0}}
+console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 0}}
 
-  obj2.b.c = 3;
-  console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 3}}
-  console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 3}}
+obj2.b.c = 3;
+console.log(JSON.stringify(obj1)); // { a: 1, b: { c: 3}}
+console.log(JSON.stringify(obj2)); // { a: 0, b: { c: 3}}
 ```
 
-
+---
 
 ## Comparações usando == (dois iguais)
 tabela de igualdades
@@ -806,6 +793,8 @@ tabela de igualdades
 
 ### symbol
 
+
+---
 
 ## Refs:
 
