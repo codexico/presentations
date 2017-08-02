@@ -2,9 +2,12 @@
 
 _the old, the es6+ and the react_
 
++++
 
 es6+ pq os navegadores já implementam features de es7 e es8, o javascript não
 evolui por versões, evolui de acordo com o que os navegadores decidem implementar
+
+---
 
 # tipos
 
@@ -25,6 +28,8 @@ x = x + 1; // 4
 const y = 3;
 const y = 5; // error
 ```
+
++++
 
 ## _string_
 ```js
@@ -37,13 +42,15 @@ const foo = `works since ${version}`;
 const six = `${3 * 2}`; // "6"
 ```
 
++++
+
 ## _boolean_
 ```js
 true, false // minúsculas
 ```
 > `!!` -> cast para boolean
 
-
++++
 
 ## _array_
 ```js
@@ -56,6 +63,8 @@ foo[0]; // "foo"
 foo.push("last")
 ```
 
++++
+
 ## _object_
 ```js
 var asdf = "asdf";
@@ -66,6 +75,8 @@ obj.fooasdf; // "bar" // dot notation
 obj["fooasdf"]; // "bar" // bracket notation
 ```
 
++++
+
 ## _JSON_
 um subset de object (quase)
 
@@ -73,6 +84,8 @@ um subset de object (quase)
 JSON.stringify(object);
 JSON.parse(string);
 ```
+
++++
 
 ## _undefined_
 ```js
@@ -88,6 +101,8 @@ foo.bar.baz; // Uncaught TypeError:
              // Cannot read property 'baz' of undefined
 ```
 
+---
+
 ## _function_
 ```js
 function foo(bar) {
@@ -95,6 +110,8 @@ function foo(bar) {
 }
 foo('bla'); // "bla"
 ```
+
++++
 
 ### funções anônimas
 
@@ -104,6 +121,8 @@ const bar = function (baz) {
 }
 bar('foo'); // foo
 ```
+
++++
 
 ### callbacks
 ```js
@@ -118,6 +137,8 @@ $.get( "ajax/test.html", function (data) {
 });
 ```
 
++++
+
 ### IIFE - Immediately Invoked Function Expressions
 ```js
 (function () {
@@ -125,6 +146,7 @@ $.get( "ajax/test.html", function (data) {
 })();
 ```
 
++++
 
 ### arrow functions
 ```js
@@ -135,6 +157,8 @@ const multiply = (x, y) => {
 const triple = x => 3 * x;
 ```
 
+---
+
 ### default values
 ```js
 // ES6
@@ -143,6 +167,8 @@ const multiply = (a, b = 1) => a * b;
 multiply(5, 7); // 35
 multiply(5); // 5
 ```
+
+---
 
 ## window, this
 ```js
@@ -157,12 +183,9 @@ function foo() {
 }
 foo(); // window
 
-function strictFunction() {
-  'use strict'; // ES5
-  return this;
-}
-strictFunction(); // undefined
 ```
+
++++
 
 ```js
 var person = {
@@ -176,6 +199,8 @@ var person = {
   }
 }
 ```
+
+---
 
 ## Destructuring and spread operator
 ```js
@@ -191,6 +216,8 @@ a; // 10
 b; // 20
 rest; // { c: 30, d: 40 }
 ```
+
+---
 
 ## Iterators
 
@@ -211,7 +238,7 @@ repete; // ["aa", "bb", "cc"] não altera o array original
 letras; // ['a', 'b', 'c']
 ```
 
-
+---
 
 ## Como incluir js na página
 ```js
@@ -222,6 +249,8 @@ letras; // ['a', 'b', 'c']
 // html5
 <script src="https://example.com/file.js" async></script>
 ```
+
++++
 
 ```js
 // inserir pelo js
@@ -241,6 +270,8 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 ```
+
++++
 
 > Scripts não async interrompem o carregamento da página.
 
@@ -263,6 +294,8 @@ export { foo, bar, baz };
 export default GMap;
 ```
 
+---
+
 ## jQuery
 ```js
 $('.product-list').addClass('newclass').show('slow').children('li')
@@ -272,7 +305,11 @@ $('.product-list').addClass('newclass').show('slow').children('li')
 );
 ```
 
+---
+
 ## Eventos
+
+---
 
 ### DOM Ready
 
@@ -289,6 +326,7 @@ $(function () {
   init();
 });
 ```
+
 ```js
 function ready(fn) {
   if (document.attachEvent
@@ -302,6 +340,8 @@ function ready(fn) {
 }
 ```
 
+---
+
 ### Click
 ```js
 $('.selector').on('click', function () {
@@ -313,6 +353,8 @@ $('.selector').on('click', function () {
 // IE9+
 el.addEventListener(eventName, eventHandler);
 ```
+
+---
 
 ### AJAX
 ```js
@@ -326,6 +368,8 @@ $.ajax({
   alert( "Data Saved: " + msg );
 });
 ```
+
++++
 
 ```js
 // IE7+
@@ -345,6 +389,8 @@ xhr.onload = function() {
 xhr.send(encodeURI('name=' + newName));
 ```
 
++++
+
 ```js
 // Edge+
 fetch('/users.html')
@@ -355,7 +401,11 @@ fetch('/users.html')
   });
 ```
 
+---
+
 ## DOM
+
+---
 
 Inserir um parágrafo em cada elemento com classe 'content'
 
@@ -363,6 +413,8 @@ Inserir um parágrafo em cada elemento com classe 'content'
 // jQuery
 $( ".content" ).append( "<p>Test</p>" );
 ```
+
++++
 
 ```js
 var p = document.createElement("p");
@@ -374,14 +426,29 @@ Array.prototype.forEach.call(currentEl, function(el, i){
 });
 ```
 
++++
+
+```js
+Array.prototype.forEach.call(currentEl, function(el, i){
+  el.appendChild(p);
+});
+```
+
 ```js
 currentEl.map(...) // ES6
 ```
 
+---
+
 ## Templates (handlebars, mustache) (jinja)
+
++++
+
 ```js
 var p = "<p>{{value}}</p>".replace('{{value}}', 'Teste');
 ```
+
++++
 
 ```js
 <script id="entry-template" type="text/x-handlebars-template">
@@ -401,11 +468,15 @@ var context = {title: "My New Post", body: "This is my first post!"};
 var html    = template(context);
 ```
 
+---
+
 ## React
 
 ```js
 const el = (username) => <p>Hello, {username}</p>;
 ```
+
++++
 
 ```js
 const el = React.createElement(
@@ -414,6 +485,8 @@ const el = React.createElement(
   `Hello, ${username}`
 );
 ```
+
+---
 
 ### Presententional Component
 
@@ -434,6 +507,8 @@ const BasketTable = (products) => (
 );
 ```
 
++++
+
 ```js
 // function
 const BasketTable = (
@@ -451,6 +526,8 @@ const BasketTable = (
 );
 ```
 
+---
+
 ### Container Component
 
 decide o que fazer: ajax, atualizar o componente ou outro componente
@@ -462,6 +539,8 @@ const BasketTableContainer = () => (
       />
 );
 ```
+
++++
 
 ```js
 import React, { Component } from 'react';
@@ -523,13 +602,14 @@ export default CepAddressFinder;
 ```
 
 
-
+---
 
 
 
 ## Deu Tempo?
 
 
+---
 
 
 > ***** REDUX
@@ -615,6 +695,25 @@ function multiply(a, b) {
   var multiplicador = b ? b : 1;
   return a * multiplicador;
 }
+```
+## window, this
+```js
+this === window; // true
+
+a = 37;
+window.a; // 37
+this.a; // 37
+
+function foo() {
+  return this;
+}
+foo(); // window
+
+function strictFunction() {
+  'use strict'; // ES5
+  return this;
+}
+strictFunction(); // undefined
 ```
 
 É comum também passar algo para a IIFE mudando o nome da variável:
