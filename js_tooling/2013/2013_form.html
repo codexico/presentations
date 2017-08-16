@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Cadastro Custom Exemplo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+
+        <!-- plugins -->
+        <link rel="stylesheet" href="js/plugins/mCustomScrollbar/jquery.mCustomScrollbar.css">
+        <link rel="stylesheet" href="js/plugins/form/chosen/chosen.css">
+
+        <!-- helpers -->
+        <link rel="stylesheet" href="css/helpers/utils.css">
+        <link rel="stylesheet" href="css/helpers/print.css">
+        <link rel="stylesheet" href="css/helpers/example.css">
+
+        <!-- main -->
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- pagina -->
+        <link rel="stylesheet" href="css/helpers/cadastro.css">
+
+        <script src="js/libs/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body class="container">
+        <p>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="facebook-tab.html">Facebook Tab</a>
+            <a href="modal.html">Modal</a>
+            <a href="modal2.html">Modal css3</a>
+            <a href="scroll-resize-end.html">Scroll e Resize Event (end)</a
+        </p>
+
+        <hr>
+
+        <main>
+            <h4>Exemplo de form customizadão.</h4>
+
+            <form action="" id="form1">
+                <div class="errorcontainer">
+                    <p>Por favor preencha todos os campos corretamente.</p>
+                </div>
+
+                <div class="field field-text name-nome">
+                    <div class="inner">
+                        <label for="input-nome">* Nome: </label>
+                        <input type="text" name="nome" id="input-nome" maxlength="500" class="required twowords" tabindex="" >
+                    </div>
+                </div><!-- .custom-field -->
+
+                <div class="field field-text name-nome">
+                    <div class="inner">
+                        <label for="input-sobrenome">* Sobrenome: </label>
+                        <span class="placeholdit">
+                            <input type="text" name="sobrenome" id="input-sobrenome" maxlength="500" class="required twowords" placeholder="Sobrenome" tabindex="">
+                        </span>
+                    </div>
+                </div><!-- .custom-field -->
+
+                <div class="field field-text field-custom field-text-custom name-email">
+                    <label for="input-email">* E-mail: (custom)</label>
+                    <div class="field-custom--l"></div>
+                        <div class="field-custom--inner">
+                            <input type="text" name="email" id="input-email" maxlength="500" class="required email" tabindex="" >
+                        </div>
+                    <div class="field-custom--r"></div>
+                </div><!-- .custom-field -->
+
+                <div class="field field-text field-custom field-text-custom name-tel9">
+                    <label for="input-tel9">* Telefone: (custom, mask aceitando 9 digitos)</label>
+                    <div class="field-custom--l"></div>
+                        <div class="field-custom--inner">
+                            <input type="text" name="tel9" id="input-tel9" class="required tel9" tabindex="" placeholder="(00) + 8 ou 9 dígitos" >
+                        </div>
+                    <div class="field-custom--r"></div>
+                </div><!-- .custom-field -->
+
+                <div class="field field-radio name-children">
+                    <span class="label">*Filhos : </span>
+
+                    <span class="radio-button">
+                        <input type="radio" name="children" id="children-s" value="S" class="required"  tabindex="" >
+                    </span>
+                    <label for="children-s"> S </label>
+
+                    <span class="radio-button">
+                        <input type="radio" name="children" id="children-n" value="N" class="required" >
+                    </span>
+                    <label for="children-n"> N </label>
+                </div><!-- .field-radio -->
+
+                <div class="field field-radio field-custom field-radio-custom name-gender">
+                    <span class="label">*Sexo : (custom)</span>
+
+                    <span class="radio-button">
+                        <input type="radio" name="gender" id="gender-m" value="M" class="js-radio-custom required"  tabindex="" >
+                    </span>
+                    <label for="gender-m"> M </label>
+
+                    <span class="radio-button">
+                        <input type="radio" name="gender" id="gender-f" value="F" class="js-radio-custom required" >
+                    </span>
+                    <label for="gender-f"> F </label>
+                </div><!-- .field-radio-custom -->
+
+                <div class="field field-radio field-custom field-inline field-radio-custom name-carro">
+                    <span class="label">* Pssui carro : (custom inline)</span>
+
+                    <span class="radio-button">
+                        <input type="radio" name="carro" id="carro-s" value="S" class="js-radio-custom required"  tabindex="" >
+                    </span>
+                    <label for="carro-s"> S </label>
+
+                    <span class="radio-button">
+                        <input type="radio" name="carro" id="carro-n" value="N" class="js-radio-custom required" >
+                    </span>
+                    <label for="carro-n"> N </label>
+                </div><!-- .field-radio-custom -->
+
+                <div class="field field-checkbox name-optinemail">
+                    <input type="checkbox" name="optinemail" id="input-optinemail" tabindex="" class="required" checked >
+                    <label for="input-optinemail" class="checkbox-label">Receber informações por email</label>
+                </div><!-- .field-checkbox -->
+
+                <div class="field field-checkbox field-custom field-checkbox-custom name-regulamento">
+                    <span class="field-container">
+                        <input type="checkbox" name="regulamento" id="input-regulamento" tabindex="" class="js-checkbox-custom required" checked >
+                        <label for="input-regulamento" class="checkbox-custom checkbox-ativo"></label>
+                    </span>
+                    <label for="input-regulamento" class="checkbox-label">Li e concordo com o </label>
+                    <a href="#" target="_blank">regulamento</a>. (custom)
+                </div><!-- .field-checkbox-custom -->
+
+                <div class="field field-textarea field-custom field-textarea-custom name-mensagem">
+                    <label for="input-mensagem">Mensagem (custom)</label>
+                    <textarea name="mensagem" id="input-mensagem" cols="30" rows="5" maxlength="200" class="js-textarea-custom required" ></textarea>
+                </div>
+
+                <div class="field field-select field-custom field-select-custom name-state js-select-custom">
+                    <label for="input-state">*Estado:</label>
+                    <select name="state" id="input-state" class="required" data-placeholder="*Estado:" tabindex="" >
+                        <option value=""></option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AM">AM</option>
+                        <option value="AP">AP</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MG">MG</option>
+                        <option value="MS">MS</option>
+                        <option value="MT">MT</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="PR">PR</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="RS">RS</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
+                </div><!-- .custom-field -->
+
+                <input type="submit" value="" tabindex="8" class="bt-submit ir">
+            </form>
+
+            <section class="todo">
+                <h1>TODO</h1>
+                <ul>
+                    <li><del>validacao</del></li>
+                    <li><del>mask</del></li>
+                    <li>radio inline</li>
+                    <li>varios itens na mesma linha</li>
+                    <li>outros exemplos</li>
+                    <li>2 forms</li>
+                    <li>captcha</li>
+                    <li>validacoes com depencia</li>
+                    <li>tabindex</li>
+                    <li>outras validacoes comuns, cpf, cep, carro modelo ano, data de nascimento, uf, celular sp</li>
+                    <li><del>placehoder ie8</del></li>
+                </ul>
+            </section>
+        </main>
+        <!-- libs -->
+        <script src="js/libs/jquery-1.9.1.min.js"></script>
+
+        <!-- plugins e modulos e outros -->
+        <script src="js/plugins/pvt.utils.js"></script>
+        <script src="js/plugins/pvt.ga.js"></script>
+
+        <script src="js/vendor/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/vendor/form/chosen/chosen.jquery.min.js"></script>
+        <script src="js/vendor/form/iCheck/jquery.icheck.min.js"></script>
+        <script src="js/vendor/form/validate/jquery.validate.min.js"></script>
+        <script src="js/vendor/form/validate/additional-methods.min.js"></script>
+        <script src="js/vendor/form/validate/localization/messages_pt_BR.js"></script>
+        <script src="js/vendor/form/mask/jquery.mask.min.js"></script>
+
+        <!-- app -->
+        <script src="js/app/pvt.config.js"></script>
+        <script src="js/app/pvt.exemplo.js"></script>
+        <script src="js/app/pvt.cadastro.js"></script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ config.LANG[product] }}" class="ie8 lt-ie10 lt-ie9">
+<![endif]-->
+<!--[if IE 9]>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ config.LANG[product] }}" class="ie9 lt-ie10">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ config.LANG[product] }}">
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{{ page_title }}</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ brand_css() }}">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)});
+    ga('create', '{{ analytics_tracker }}', 'auto');
+    ga('require', 'linkid');
+    </script>
+
+    <!--[if lt IE 9]><script src="{{ url_for('static', filename='common/js/lib/modernizr.custom.91420.js') }}"></script><![endif]-->
+
+    <script>
+    window.titans = {};
+    titans.common = {
+      debug: {{ config.DEBUG|lower }},
+      pages: {
+        terms: "{{ url_for('.static_page', page_type='terms') }}",
+        privacy: "{{ url_for('.static_page', page_type='privacy') }}",
+        recovery: "{{ url_for('.recovery') }}",
+        faq: "{{ url_for('.static_page', page_type='faq') }}",
+      },
+      Util: {
+        base: "{{ url_for('.home') }}",
+        assets: "{{ url_for('static', filename='') }}",
+        assets_common: "{{ url_for('static', filename='common/') }}",
+        placeholder: "{{url_for('static',filename='common/js/polyfills/jquery.placeholder.min.js') }}"
+      }
+    };
+    </script>
+  </head>
+
+  <body>
+
+    <main>
+      <div class="wrap-content">
+          {%- block app_main_content -%}{%- endblock app_main_content -%}
+      </div>
+    </main>
+
+    <script data-main="{{ url_for('static', filename='js/web/main') }}" src="{{ url_for('static', filename='common/js/lib/require.2.1.11.js') }}"></script>
+
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common/default/web/pages/browser-support.css') }}">
+    <![endif]-->
+
+  </body>
+</html>

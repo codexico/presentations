@@ -1,0 +1,14 @@
+source 'https://rubygems.org'
+
+gem 'compass', '~>1.0.3'
+
+group :test do
+  gem 'capybara'
+  gem 'cucumber'
+  gem 'rspec'
+  gem 'capybara-webkit'
+  gem 'capybara-mechanize'
+  gem 'selenium-webdriver'
+  gem 'poltergeist'
+  gem 'rspec-visual'
+end
