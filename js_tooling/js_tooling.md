@@ -1,10 +1,10 @@
-# JS tooling
+# JS tooling (CSS and HTML)
 
 
 ## Problemas:
 
 - Muitos scripts e css na página
-- Variávies em CSS
+- Variáveis em CSS
 - Unir vários js em um só
 - Suporte a features em navegadores
 - Desenvolvimento - Reload do navegador a cada mudança
